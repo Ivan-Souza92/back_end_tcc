@@ -15,8 +15,10 @@ const PublicoAlvo_ComunidadeController = require('./controllers/PublicoAlvo_Comu
 
 routes.post('/prof_extensionista', ProfExtensionistaController.store);
 routes.get('/professor/list', ProfExtensionistaController.index );
+routes.get('/professor/get/:id', ProfExtensionistaController.findByID );
 routes.put('/professor/edit/:id', ProfExtensionistaController.update);
 routes.delete('/professor/delete/:id', ProfExtensionistaController.delete);
+
 
 
 routes.post('/comunidade', ComunidadeController.store);

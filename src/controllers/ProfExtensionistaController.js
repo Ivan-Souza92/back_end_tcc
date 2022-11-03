@@ -7,14 +7,26 @@ module.exports = {
         const { nome, curso } = req.body;
         try {
             const professorExtensionista = await ProfessorExtensionista.create({ nome, curso });
-            return res.status(200).json({professorExtensionista});
+            return res.status(200).json({ professorExtensionista });
 
         } catch (error) {
             res.status(400).json({ error })
         }
     },
 
-        async update(req, res) {
+    async findByID(req, res) {
+
+        try {
+            const { id } = req.params;
+            const professor = await ProfessorExtensionista.findByPk(id);
+            return res.status(200).json(professor);
+
+        } catch (error) {
+            res.status(400).json({ error })
+        }
+    },
+
+    async update(req, res) {
         try {
             const { id } = req.params;
             const { nome, curso } = req.body;
@@ -35,7 +47,7 @@ module.exports = {
 
     async index(req, res) {
         try {
-            const professor  = await ProfessorExtensionista.findAll();
+            const professor = await ProfessorExtensionista.findAll();
             return res.status(200).json(professor);
 
         } catch (error) {
