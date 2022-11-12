@@ -11,7 +11,7 @@ class GrupoExtensao extends Model{
     }
 
     static associate(models){
-        this.hasMany(models.GrupoExtensao, {foreignKey: 'professor_extensionista_id', as: 'professor_extensionista'});
+        this.belongsTo(models.ProfessorExtensionista, {foreignKey: 'professor_extensionista_id', as: 'professor_extensionista'});
     }
 }
 

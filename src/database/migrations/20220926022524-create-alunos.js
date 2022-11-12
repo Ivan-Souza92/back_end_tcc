@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
         references: { model: 'grupo_extensaos', key: 'id' },
         onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onDelete: 'RESTRICT',
       },
       nome: {
         type: Sequelize.STRING,

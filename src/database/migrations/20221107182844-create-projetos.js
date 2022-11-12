@@ -3,27 +3,23 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    return await queryInterface.createTable('grupo_extensaos', { //postgres aceitando somente esse nome de tabela
+    return await queryInterface.createTable('projetos', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
-      professor_extensionista_id: {
+      descricao: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      grupo_extensao_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'professor_extensionista', key: 'id' },
+        references: { model: 'grupo_extensaos', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT',
-      },
-      nome: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      ano_semestre: {
-        type: Sequelize.INTEGER,
-        allowNull: false
       },
       created_at: {
         type: Sequelize.DATE,
@@ -38,6 +34,6 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
 
-    return await queryInterface.dropTable('grupo_extensaos');
+    return await queryInterface.dropTable('projetos');
   }
 };

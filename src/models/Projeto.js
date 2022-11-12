@@ -12,7 +12,7 @@ class Projeto extends Model {
         })
     }
     static associate(models){
-        this.hasMany(Projeto, {foreignKey: 'grupo_extensao_id', as: 'grupo_extensaos'});
+        this.belongsTo(models.GrupoExtensao, {foreignKey: 'grupo_extensao_id', as: 'grupo_extensaos'});
     }
 }
 
